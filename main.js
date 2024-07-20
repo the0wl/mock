@@ -1,6 +1,6 @@
 // main.js
-const { app, BrowserWindow } = require("electron");
-const { spawn } = require("child_process");
+import { app, BrowserWindow } from "electron";
+import { spawn } from "child_process";
 
 let mainWindow;
 let serverProcess;
@@ -14,7 +14,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile("index.html");
+  mainWindow.loadFile("./ui/index.html");
 
   mainWindow.on("closed", function () {
     mainWindow = null;
@@ -25,7 +25,7 @@ app.whenReady().then(() => {
   createWindow();
 
   // Inicia o servidor Express
-  serverProcess = spawn("node", ["server.js"], { stdio: "inherit" });
+  serverProcess = spawn("node", ["--env-file=.env", "./ui-api/server.js"], { stdio: "inherit" });
 
   serverProcess.on("error", (err) => {
     console.error(`Erro ao iniciar o servidor: ${err}`);
