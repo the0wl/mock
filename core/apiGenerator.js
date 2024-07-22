@@ -28,13 +28,13 @@ function build() {
   checkFolder();
   const routes = routeFileManager.readJsonFile();
 
-  const jsRoutes = routes.map((route) => {
-    const { nome, rota, tipo, resposta, codigoHttp } = route;
+  const jsRoutes = routes.map((item) => {
+    const { name, route, type, response, code } = item;
 
-    return `// ${nome}\n` +
-    `app.${tipo.toLowerCase()}(\"${rota}\", (req, res) => {\n` +
-    `  res.status(${codigoHttp}).json(\n` +
-    `    ${resposta}\n` +
+    return `// ${name}\n` +
+    `app.${type.toLowerCase()}(\"${route}\", (req, res) => {\n` +
+    `  res.status(${code}).json(\n` +
+    `    ${response}\n` +
     "  )\n});\n\n"
   })
 
@@ -48,7 +48,7 @@ function build() {
     jsRoutes.join("") +
 
     "app.listen(3300, () => {\n" +
-    "  console.log(\"Servidor rodando em http://localhost:3300\");\n" +
+    "  console.log(\"[MOCK] Servidor rodando em http://localhost:3300\");\n" +
     "});\n"
   );
 

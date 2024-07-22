@@ -4,6 +4,6 @@ export function LateralMenu(item, key) {
         hx-get="http://localhost:3333/item-details/${key}"
         hx-target="#form-container" 
         hx-swap="innerHTML">
-        ${item.nome}
+        ${item.name}
       </li>`;
 }

@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.post("/submit-form", (req, res) => {
   const data = req.body;
   const jsonData = routeFileManager.readJsonFile();
-  const index = jsonData.findIndex((item) => item.nome === data.nome);
+  const index = jsonData.findIndex((item) => item.name === data.name);
   if (index === -1) { jsonData.push(data); } else { jsonData[index] = data; }
   routeFileManager.updateJsonFile(JSON.stringify(jsonData, null, 4));
   const items = jsonData.map((item, key) => LateralMenu(item, key)).join("");
@@ -41,5 +41,5 @@ app.get("/item-details/:key", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-  console.log(`Servidor rodando em ${process.env.BASE_URL} na porta ${process.env.PORT}`);
+  console.log(`[UI] Servidor rodando em ${process.env.BASE_URL}:${process.env.PORT}`);
 });

@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MocK</title>
-    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="menu">
-      <h2>Itens Salvos</h2>
-      <ul
-        id="menu-items"
-        hx-get="http://localhost:3333/menu-items"
-        hx-trigger="load"
-        hx-swap="innerHTML"
-      >
-        <!-- Itens serão carregados dinamicamente -->
-      </ul>
-    </div>
 
-    <div class="content">
-      <div id="form-container" class="form-container">
-        <form
-          hx-post="http://localhost:3333/submit-form"
-          hx-target="#menu-items"
-          hx-swap="innerHTML"
-        >
-          <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MocK</title>
+  <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="menu">
+    <h2>Itens Salvos</h2>
+    <ul id="menu-items" hx-get="http://localhost:3333/menu-items" hx-trigger="load" hx-swap="innerHTML">
+      <!-- Itens serão carregados dinamicamente -->
+    </ul>
+  </div>
+
+  <div class="content">
+    <div id="form-container" class="form-container">
+      <form hx-post="http://localhost:3333/submit-form" hx-target="#menu-items" hx-swap="innerHTML">
+        <div class="form-group">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group form-control-quarter">
+            <label for="type">Tipo:</label>
+            <select id="type" name="type" class="form-control">
+              <option value="GET">GET</option>
+              <option value="POST">POST</option>
+              <option value="PATCH">PATCH</option>
+              <option value="DELETE">DELETE</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="rota">Rota:</label>
-            <input type="text" id="rota" name="rota" required />
+          <div class="form-group form-control-quarter">
+            <label for="code">Código:</label>
+            <select id="code" name="code" class="form-control">
+              <option value="200">200</option>
+              <option value="201">201</option>
+              <option value="400">400</option>
+              <option value="401">401</option>
+              <option value="403">403</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label for="tipo">Tipo:</label>
-            <input type="text" id="tipo" name="tipo" required />
+          <div class="form-group form-control-half">
+            <label for="route">Rota:</label>
+            <input type="text" id="route" name="route" required />
           </div>
-          <div class="form-group">
-            <label for="resposta">Resposta:</label>
-            <textarea id="resposta" name="resposta" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="codigoHttp">Código HTTP:</label>
-            <input type="text" id="codigoHttp" name="codigoHttp" required />
-          </div>
-          <div class="form-group">
-            <button id="build-button" type="submit">Build</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label for="response">Resposta:</label>
+          <textarea id="response" name="response" required></textarea>
+        </div>
+        <div class="form-group">
+          <button id="build-button" type="submit">Build</button>
+        </div>
+      </form>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

@@ -59,6 +59,11 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.form-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 .form-group textarea {
   resize: vertical;
   height: 100px;
@@ -74,4 +79,24 @@ body {
 }
 .form-group button:hover {
   background-color: #0056b3;
+}
+.form-row {
+  display: flex;
+  width: 100%;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.form-control-quarter {
+  width: 120px;
+  padding: 10px;
+  padding-left: 0px;
+  margin-right: 10px;
+}
+.form-control-half {
+  width: calc(100% - 240px);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
